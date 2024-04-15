@@ -1,12 +1,14 @@
 /* // <uniquifier>: Use a unique and descriptive class name
 // <weight>: Use a value from 100 to 900
 
+
 .montserrat-<uniquifier> {
   font-optical-sizing: auto;
   font-weight: <weight>;
   font-style: normal;
 } */
 body {
+  transition: all 0.5s ease-in-out;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -15,18 +17,19 @@ body {
   font-family: "Montserrat", sans-serif;
 
 }
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #a3a3a3;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #373737;
 }
 
 /* Handle on hover */
@@ -67,22 +70,35 @@ body {
   accent-color: rgb(255, 255, 255);
   height: 5px;
   background-color: black;
+  transition: width 5s linear;
+  cursor: pointer;
 }
 
-.progress-bar>.bar:hover{
+.progress-bar>.bar:hover {
   accent-color: rgb(29, 185, 84);
   background-color: black;
 }
+
+.music-view {
+  width: 340px;
+  height: auto;
+}
+
 .music-view>img {
   border-radius: 12px;
   width: 100%;
   height: auto;
+  position: relative;
 }
 
 .music-name {
   color: rgb(255, 255, 255);
   font-weight: 600;
   margin-bottom: 20px;
+}
+
+.music-desc {
+  width: 200px;
 }
 
 .music-desc>.music-info {
@@ -121,7 +137,8 @@ body {
   padding: 10px 0;
   border-radius: 12px;
 }
-.music-small:hover{
+
+.music-small:hover {
   background-color: #3d3d3d;
 }
 

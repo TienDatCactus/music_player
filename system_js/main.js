@@ -28,6 +28,7 @@ const playIcon = $(".play>ion-icon");
 const mixIcon = $(".mix>ion-icon");
 const controller = $(".control");
 
+const progressBar = $(".progress-bar>.bar");
 const app = {
   curIndex: 0,
   songs: [
@@ -64,7 +65,7 @@ const app = {
       singer: "kizz0",
       path: "./assets/songs/de-copao-na-mao-estourado.mp3",
       image:
-        "./assets/images/326252714_6511697822195815_3289725965969967712_n.jpg",
+        "./assets/images/318027802_5770860226269691_2328322409162795554_n.jpg",
     },
     {
       name: "the box",
@@ -124,6 +125,7 @@ const app = {
     },
   ],
   isPlaying: false,
+  isShuffle: false,
   defineProperty: function () {
     Object.defineProperty(this, "currentSong", {
       get: function () {
@@ -171,18 +173,10 @@ const app = {
 
     playBtn.onclick = function () {
       if (_this.isPlaying) {
-        _this.isPlaying = false;
         audio.pause();
-        controller.classList.remove("playing");
-        playIcon.name = "play";
       } else {
-        _this.isPlaying = true;
         audio.play();
-        controller.classList.add("playing");
-        playIcon.name = "pause-outline" 
       }
-      
-
 
       audio.onplay = function () {
         _this.isPlaying = true;
@@ -235,7 +229,12 @@ const app = {
       replayBtn.onclick = function () {
         audio.currentTime = 0;
       };
+
+      audio.onended = function () {
+        nextBtn.click()
+      }
     };
+
   },
   render: function () {
     const hmtl = this.songs.map((song) => {
