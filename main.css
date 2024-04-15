@@ -1,0 +1,125 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+
+.montserrat-<uniquifier> {
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+body {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  top: 30px;
+  font-family: "Montserrat", sans-serif;
+
+}
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  padding: 30px;
+  border-radius: 0.6rem;
+  background-color: rgb(30, 30, 30);
+
+}
+
+.control {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px 0 0 0;
+}
+
+.acts {
+  font-size: 15px;
+  cursor: pointer;
+  color: rgb(223, 223, 223);
+}
+
+.acts.play {
+  font-size: 26px;
+  color: rgb(255, 255, 255);
+
+}
+
+.progress-bar>.bar {
+  width: 100%;
+  color: rgb(77, 77, 77);
+  accent-color: rgb(255, 255, 255);
+  height: 5px;
+  background-color: black;
+}
+
+.progress-bar>.bar:hover{
+  accent-color: rgb(29, 185, 84);
+  background-color: black;
+}
+.music-view>img {
+  border-radius: 12px;
+}
+
+.music-name {
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.music-desc>.music-info {
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px 0 0 0;
+}
+
+.music-desc>.music-subinfo {
+  color: rgb(170, 168, 168);
+  font-weight: 400;
+  margin: 5px 0 5px 0
+}
+
+.playlist {
+  background-color: rgb(36, 36, 36);
+  padding: 10px;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.header-noti>.noti {
+  color: rgb(249, 249, 249);
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.music-small {
+  display: flex;
+  align-items: center;
+}
+
+.music-icon {
+  color: rgb(250, 250, 250);
+  margin-right: 10px;
+}
+
+.music-desc-small {
+  margin-left: 16px;
+}
+
+.music-desc-small>.music-info-small {
+  color: rgb(250, 250, 250);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.music-desc-small>.music-subinfo-small {
+  color: rgb(198, 198, 198);
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.music-small>.music-view-small>img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+}
