@@ -155,7 +155,7 @@ const app = {
   },
   prevSong: function () {
     this.curIndex--;
-    if (this.curIndex <= this.songs.length) {
+    if (this.curIndex < 0) {
       this.curIndex = this.songs.length - 1;
     }
     this.loadCurrentSong();
@@ -226,6 +226,7 @@ const app = {
           _this.prevSong();
         }
         audio.play();
+        _this.render();
       };
 
       mixBtn.onclick = function () {
@@ -248,15 +249,18 @@ const app = {
       };
 
       audio.onended = function () {
-        nextBtn.click()
-      }
+        if (_this.isReplay) {
+          audio.play();
+        } else {
+          nextBtn.click();
+        }
+      };
     };
-
   },
   render: function () {
-    const hmtl = this.songs.map((song) => {
+    const hmtl = this.songs.map((song, indx) => {
       return `
-      <div class="music-small">
+      <div class="music-small ${indx === this.curIndex ? "active" : ""}">
         <div class="music-icon">
           <ion-icon name="${
             indx === this.curIndex ? "bar-chart-outline" : "musical-note"
