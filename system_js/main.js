@@ -26,6 +26,8 @@ const replayBtn = $(".replay");
 const audio = $(".audio");
 const playIcon = $(".play>ion-icon");
 const mixIcon = $(".mix>ion-icon");
+const replayIcon = $(".replay>ion-icon");
+
 const controller = $(".control");
 
 const progressBar = $(".progress-bar>.bar");
@@ -126,6 +128,7 @@ const app = {
   ],
   isPlaying: false,
   isShuffle: false,
+  isReplay: false,
   defineProperty: function () {
     Object.defineProperty(this, "currentSong", {
       get: function () {
@@ -165,9 +168,16 @@ const app = {
     this.curIndex = newIndx;
     this.loadCurrentSong();
   },
-  replaySong: function () {
-    audio.currentTime = 0;
+  scrollToActiveSong: function () {
+    setTimeout(function () {
+      $(".music-small.active").scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    }, 500);
   },
+
   handleEvents: function () {
     const _this = this;
 
@@ -205,6 +215,8 @@ const app = {
           _this.nextSong();
         }
         audio.play();
+        _this.render();
+        _this.scrollToActiveSong();
       };
 
       prevBtn.onclick = function () {
@@ -227,7 +239,12 @@ const app = {
       };
 
       replayBtn.onclick = function () {
-        audio.currentTime = 0;
+        _this.isReplay = !_this.isReplay;
+        if (_this.isReplay) {
+          replayIcon.name = "headset";
+        } else {
+          replayIcon.name = "headset-outline";
+        }
       };
 
       audio.onended = function () {
@@ -241,7 +258,11 @@ const app = {
       return `
       <div class="music-small">
         <div class="music-icon">
-          <ion-icon name="musical-note"></ion-icon>
+          <ion-icon name="${
+            indx === this.curIndex ? "bar-chart-outline" : "musical-note"
+          }" ${
+        indx === this.curIndex ? 'style="color:rgb(30, 212, 95)"' : ""
+      }>${song.name}></ion-icon>
         </div>
         <div class="music-view-small">
           <img
@@ -249,7 +270,10 @@ const app = {
           />
         </div>
         <div class="music-desc-small">
-          <div class="music-info-small">${song.name}</div>
+          <div class="music-info-small"
+          ${indx === this.curIndex ? 'style="color:rgb(30, 212, 95)"' : ""}>${
+        song.name
+      }</div>
           <div class="music-subinfo-small">${song.singer}</div>
         </div>
       </div>
